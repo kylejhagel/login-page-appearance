@@ -34,7 +34,7 @@ The plugin stores Media Library attachment IDs rather than image URLs. When Site
 
 == Installation ==
 
-1. Upload the `wp-site-login-logo` folder to `/wp-content/plugins/`, or install the ZIP through Plugins > Add New > Upload Plugin.
+1. Upload the `simple-wp-login-page` folder to `/wp-content/plugins/`, or install the ZIP through Plugins > Add New > Upload Plugin.
 2. Activate Simple WP Login Page.
 3. Go to Settings > Login Page.
 4. Confirm the logo source and save the settings.

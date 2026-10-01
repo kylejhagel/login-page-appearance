@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Simple WP Login Page
- * Plugin URI:        https://yogaclassestoday.com/
+ * Plugin URI:        https://github.com/kylejhagel/simple-wp-login-page
  * Description:       Modernizes the default WordPress login screen with custom branding, softened form styles, and accessible link controls.
  * Version:           1.2.0
  * Requires at least: 6.2
@@ -9,7 +9,7 @@
  * Author:            Kyle Hagel
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       wp-site-login-logo
+ * Text Domain:       simple-wp-login-page
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
