@@ -1,3 +1,3 @@
-# WP Site Login Logo
+# Simple WP Login Page
 
-Customize the WordPress login logo, background, form appearance, and navigation links.
+Modernizes the default WordPress login screen with custom branding, softened form styles, and accessible link controls.

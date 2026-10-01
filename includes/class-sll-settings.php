@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin settings for WP Site Login Logo.
+ * Admin settings for Simple WP Login Page.
  *
  * @package Site_Login_Logo
  */
@@ -65,12 +65,12 @@ class SLL_Settings {
 	}
 
 	/**
-	 * Adds Settings > Login Logo.
+	 * Adds Settings > Login Page.
 	 */
 	public static function add_settings_page() {
 		add_options_page(
-			__( 'WP Site Login Logo', 'site-login-logo' ),
-			__( 'Login Logo', 'site-login-logo' ),
+			__( 'Simple WP Login Page', 'site-login-logo' ),
+			__( 'Login Page', 'site-login-logo' ),
 			'manage_options',
 			self::PAGE_SLUG,
 			array( __CLASS__, 'render_settings_page' )
@@ -380,7 +380,7 @@ class SLL_Settings {
 		}
 		?>
 		<div class="wrap sll-settings-wrap">
-			<h1><?php esc_html_e( 'WP Site Login Logo', 'site-login-logo' ); ?></h1>
+			<h1><?php esc_html_e( 'Simple WP Login Page', 'site-login-logo' ); ?></h1>
 			<?php settings_errors(); ?>
 			<form action="options.php" method="post">
 				<?php

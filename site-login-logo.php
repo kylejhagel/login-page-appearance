@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       WP Site Login Logo
+ * Plugin Name:       Simple WP Login Page
  * Plugin URI:        https://yogaclassestoday.com/
- * Description:       Customizes the WordPress login logo, background, form appearance, and navigation links.
+ * Description:       Modernizes the default WordPress login screen with custom branding, softened form styles, and accessible link controls.
  * Version:           1.2.0
  * Requires at least: 6.2
  * Requires PHP:      7.4

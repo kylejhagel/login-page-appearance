@@ -1,4 +1,4 @@
-=== WP Site Login Logo ===
+=== Simple WP Login Page ===
 Contributors: kylehagel
 Tags: login, logo, branding, custom logo, login form
 Requires at least: 6.2
@@ -8,11 +8,11 @@ Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Customize the WordPress login logo, background, form appearance, and navigation links.
+Modernize the default WordPress login screen with simple branding and form appearance controls.
 
 == Description ==
 
-WP Site Login Logo provides a focused Settings > Login Logo screen for controlling the logo shown above the WordPress login form, the login-page background, and optional form and navigation-link styling.
+Simple WP Login Page provides focused controls for modernizing the default WordPress login screen without replacing WordPress authentication or loading a full design framework.
 
 Features include:
 
@@ -35,8 +35,8 @@ The plugin stores Media Library attachment IDs rather than image URLs. When Site
 == Installation ==
 
 1. Upload the `site-login-logo` folder to `/wp-content/plugins/`, or install the ZIP through Plugins > Add New > Upload Plugin.
-2. Activate WP Site Login Logo.
-3. Go to Settings > Login Logo.
+2. Activate Simple WP Login Page.
+3. Go to Settings > Login Page.
 4. Confirm the logo source and save the settings.
 
 == Frequently Asked Questions ==
