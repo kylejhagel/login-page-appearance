@@ -36,13 +36,20 @@ class SLL_Settings {
 	 */
 	public static function get_defaults() {
 		return array(
-			'enabled'            => 1,
-			'logo_source'        => 'site_logo',
-			'custom_logo_id'     => 0,
-			'background_enabled' => 0,
-			'background_color'   => '#f0f0f1',
-			'logo_width'         => 280,
-			'logo_link'          => 'home',
+			'enabled'              => 1,
+			'logo_source'          => 'site_logo',
+			'custom_logo_id'       => 0,
+			'background_enabled'   => 0,
+			'background_color'     => '#f0f0f1',
+			'logo_width'           => 280,
+			'logo_link'            => 'home',
+			'form_style_enabled'   => 0,
+			'link_style_enabled'   => 0,
+			'link_color'           => '#0a4f42',
+			'link_hover_color'     => '#a9533a',
+			'link_focus_color'     => '#0a4f42',
+			'nav_alignment'        => 'left',
+			'back_link_alignment' => 'left',
 		);
 	}
 
@@ -97,6 +104,17 @@ class SLL_Settings {
 		add_settings_field( 'sll_background', __( 'Login background', 'site-login-logo' ), array( __CLASS__, 'render_background_field' ), self::PAGE_SLUG, 'sll_logo_section' );
 		add_settings_field( 'sll_logo_width', __( 'Logo width', 'site-login-logo' ), array( __CLASS__, 'render_logo_width_field' ), self::PAGE_SLUG, 'sll_logo_section' );
 		add_settings_field( 'sll_logo_link', __( 'Logo link', 'site-login-logo' ), array( __CLASS__, 'render_logo_link_field' ), self::PAGE_SLUG, 'sll_logo_section' );
+
+		add_settings_section(
+			'sll_appearance_section',
+			__( 'Login form appearance', 'site-login-logo' ),
+			array( __CLASS__, 'render_appearance_section_description' ),
+			self::PAGE_SLUG
+		);
+
+		add_settings_field( 'sll_form_style', __( 'Form styling', 'site-login-logo' ), array( __CLASS__, 'render_form_style_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
+		add_settings_field( 'sll_link_style', __( 'Login links', 'site-login-logo' ), array( __CLASS__, 'render_link_style_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
+		add_settings_field( 'sll_link_alignment', __( 'Link alignment', 'site-login-logo' ), array( __CLASS__, 'render_link_alignment_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
 	}
 
 	/**
@@ -106,25 +124,50 @@ class SLL_Settings {
 	 * @return array
 	 */
 	public static function sanitize_options( $input ) {
-		$input            = is_array( $input ) ? $input : array();
-		$defaults         = self::get_defaults();
-		$source           = isset( $input['logo_source'] ) ? sanitize_key( $input['logo_source'] ) : $defaults['logo_source'];
-		$link             = isset( $input['logo_link'] ) ? sanitize_key( $input['logo_link'] ) : $defaults['logo_link'];
-		$width            = isset( $input['logo_width'] ) ? absint( $input['logo_width'] ) : $defaults['logo_width'];
-		$background_color = isset( $input['background_color'] ) ? sanitize_hex_color( $input['background_color'] ) : $defaults['background_color'];
+		$input               = is_array( $input ) ? $input : array();
+		$defaults            = self::get_defaults();
+		$source              = isset( $input['logo_source'] ) ? sanitize_key( $input['logo_source'] ) : $defaults['logo_source'];
+		$link                = isset( $input['logo_link'] ) ? sanitize_key( $input['logo_link'] ) : $defaults['logo_link'];
+		$width               = isset( $input['logo_width'] ) ? absint( $input['logo_width'] ) : $defaults['logo_width'];
+		$background_color    = isset( $input['background_color'] ) ? sanitize_hex_color( $input['background_color'] ) : $defaults['background_color'];
+		$link_color          = isset( $input['link_color'] ) ? sanitize_hex_color( $input['link_color'] ) : $defaults['link_color'];
+		$link_hover_color    = isset( $input['link_hover_color'] ) ? sanitize_hex_color( $input['link_hover_color'] ) : $defaults['link_hover_color'];
+		$link_focus_color    = isset( $input['link_focus_color'] ) ? sanitize_hex_color( $input['link_focus_color'] ) : $defaults['link_focus_color'];
+		$nav_alignment       = isset( $input['nav_alignment'] ) ? sanitize_key( $input['nav_alignment'] ) : $defaults['nav_alignment'];
+		$back_link_alignment = isset( $input['back_link_alignment'] ) ? sanitize_key( $input['back_link_alignment'] ) : $defaults['back_link_alignment'];
+		$alignments          = array( 'left', 'center', 'right' );
 
 		if ( ! $background_color ) {
 			$background_color = $defaults['background_color'];
 		}
 
+		if ( ! $link_color ) {
+			$link_color = $defaults['link_color'];
+		}
+
+		if ( ! $link_hover_color ) {
+			$link_hover_color = $defaults['link_hover_color'];
+		}
+
+		if ( ! $link_focus_color ) {
+			$link_focus_color = $defaults['link_focus_color'];
+		}
+
 		return array(
-			'enabled'            => empty( $input['enabled'] ) ? 0 : 1,
-			'logo_source'        => in_array( $source, array( 'site_logo', 'custom' ), true ) ? $source : $defaults['logo_source'],
-			'custom_logo_id'     => isset( $input['custom_logo_id'] ) ? absint( $input['custom_logo_id'] ) : 0,
-			'background_enabled' => empty( $input['background_enabled'] ) ? 0 : 1,
-			'background_color'   => $background_color,
-			'logo_width'         => max( 80, min( 400, $width ) ),
-			'logo_link'          => in_array( $link, array( 'home', 'wordpress' ), true ) ? $link : $defaults['logo_link'],
+			'enabled'             => empty( $input['enabled'] ) ? 0 : 1,
+			'logo_source'         => in_array( $source, array( 'site_logo', 'custom' ), true ) ? $source : $defaults['logo_source'],
+			'custom_logo_id'      => isset( $input['custom_logo_id'] ) ? absint( $input['custom_logo_id'] ) : 0,
+			'background_enabled'  => empty( $input['background_enabled'] ) ? 0 : 1,
+			'background_color'    => $background_color,
+			'logo_width'          => max( 80, min( 400, $width ) ),
+			'logo_link'           => in_array( $link, array( 'home', 'wordpress' ), true ) ? $link : $defaults['logo_link'],
+			'form_style_enabled'  => empty( $input['form_style_enabled'] ) ? 0 : 1,
+			'link_style_enabled'  => empty( $input['link_style_enabled'] ) ? 0 : 1,
+			'link_color'          => $link_color,
+			'link_hover_color'    => $link_hover_color,
+			'link_focus_color'    => $link_focus_color,
+			'nav_alignment'       => in_array( $nav_alignment, $alignments, true ) ? $nav_alignment : $defaults['nav_alignment'],
+			'back_link_alignment' => in_array( $back_link_alignment, $alignments, true ) ? $back_link_alignment : $defaults['back_link_alignment'],
 		);
 	}
 
@@ -168,6 +211,10 @@ class SLL_Settings {
 
 	public static function render_section_description() {
 		echo '<p>' . esc_html__( 'Use the active theme’s Site Logo or a Media Library image, and optionally override the login-page background color.', 'site-login-logo' ) . '</p>';
+	}
+
+	public static function render_appearance_section_description() {
+		echo '<p>' . esc_html__( 'Optionally apply the Yoga Class Today form treatment and control the login navigation links without changing WordPress login markup.', 'site-login-logo' ) . '</p>';
 	}
 
 	public static function render_enabled_field() {
@@ -253,6 +300,74 @@ class SLL_Settings {
 			<option value="home" <?php selected( 'home', $options['logo_link'] ); ?>><?php esc_html_e( 'Site homepage', 'site-login-logo' ); ?></option>
 			<option value="wordpress" <?php selected( 'wordpress', $options['logo_link'] ); ?>><?php esc_html_e( 'WordPress.org (default)', 'site-login-logo' ); ?></option>
 		</select>
+		<?php
+	}
+
+	public static function render_form_style_field() {
+		$options = self::get_options();
+		?>
+		<label>
+			<input type="checkbox" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[form_style_enabled]" value="1" <?php checked( 1, $options['form_style_enabled'] ); ?>>
+			<?php esc_html_e( 'Use the softened YCT form and input styling', 'site-login-logo' ); ?>
+		</label>
+		<p class="description"><?php esc_html_e( 'Applies rounded fields, softer borders and shadows, and a visible focus ring to WordPress login, registration, and password forms.', 'site-login-logo' ); ?></p>
+		<?php
+	}
+
+	public static function render_link_style_field() {
+		$options = self::get_options();
+		?>
+		<div id="sll-link-control" class="sll-link-control<?php echo empty( $options['link_style_enabled'] ) ? ' sll-link-control--disabled' : ''; ?>">
+			<label class="sll-control-toggle">
+				<input type="checkbox" id="sll-link-style-enabled" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[link_style_enabled]" value="1" <?php checked( 1, $options['link_style_enabled'] ); ?>>
+				<?php esc_html_e( 'Override the lost-password and back-to-site link styles', 'site-login-logo' ); ?>
+			</label>
+			<div class="sll-link-dependent sll-color-grid">
+				<label for="sll-link-color">
+					<?php esc_html_e( 'Link color', 'site-login-logo' ); ?><br>
+					<input type="text" id="sll-link-color" class="sll-link-color-field" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[link_color]" value="<?php echo esc_attr( $options['link_color'] ); ?>" data-default-color="#0a4f42">
+				</label>
+				<label for="sll-link-hover-color">
+					<?php esc_html_e( 'Hover color', 'site-login-logo' ); ?><br>
+					<input type="text" id="sll-link-hover-color" class="sll-link-color-field" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[link_hover_color]" value="<?php echo esc_attr( $options['link_hover_color'] ); ?>" data-default-color="#a9533a">
+				</label>
+				<label for="sll-link-focus-color">
+					<?php esc_html_e( 'Keyboard focus color', 'site-login-logo' ); ?><br>
+					<input type="text" id="sll-link-focus-color" class="sll-link-color-field" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[link_focus_color]" value="<?php echo esc_attr( $options['link_focus_color'] ); ?>" data-default-color="#0a4f42">
+				</label>
+			</div>
+			<p class="description"><?php esc_html_e( 'These colors target links inside #nav and #backtoblog, including hover and keyboard-focus states.', 'site-login-logo' ); ?></p>
+		</div>
+		<?php
+	}
+
+	public static function render_link_alignment_field() {
+		$options    = self::get_options();
+		$alignments = array(
+			'left'   => __( 'Left', 'site-login-logo' ),
+			'center' => __( 'Center', 'site-login-logo' ),
+			'right'  => __( 'Right', 'site-login-logo' ),
+		);
+		?>
+		<div class="sll-link-dependent sll-alignment-grid<?php echo empty( $options['link_style_enabled'] ) ? ' sll-link-dependent--disabled' : ''; ?>">
+			<label for="sll-nav-alignment">
+				<?php esc_html_e( 'Lost-password/navigation links', 'site-login-logo' ); ?><br>
+				<select id="sll-nav-alignment" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[nav_alignment]">
+					<?php foreach ( $alignments as $value => $label ) : ?>
+						<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $options['nav_alignment'] ); ?>><?php echo esc_html( $label ); ?></option>
+					<?php endforeach; ?>
+				</select>
+			</label>
+			<label for="sll-back-link-alignment">
+				<?php esc_html_e( 'Back-to-site link', 'site-login-logo' ); ?><br>
+				<select id="sll-back-link-alignment" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[back_link_alignment]">
+					<?php foreach ( $alignments as $value => $label ) : ?>
+						<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $options['back_link_alignment'] ); ?>><?php echo esc_html( $label ); ?></option>
+					<?php endforeach; ?>
+				</select>
+			</label>
+		</div>
+		<p class="description"><?php esc_html_e( 'Alignment is responsive-safe and does not use absolute positioning or custom offsets.', 'site-login-logo' ); ?></p>
 		<?php
 	}
 

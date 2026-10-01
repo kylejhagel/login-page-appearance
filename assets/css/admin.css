@@ -37,6 +37,11 @@
 	margin-bottom: 14px;
 }
 
+.sll-control-toggle {
+	display: inline-block;
+	margin-bottom: 14px;
+}
+
 .sll-background-picker {
 	transition: opacity 0.15s ease-in-out;
 }
@@ -49,4 +54,39 @@
 
 .sll-background-control--disabled .sll-background-picker {
 	opacity: 0.55;
+}
+
+.sll-color-grid,
+.sll-alignment-grid {
+	display: grid;
+	gap: 16px;
+	grid-template-columns: repeat(3, minmax(150px, 1fr));
+	max-width: 680px;
+	transition: opacity 0.15s ease-in-out;
+}
+
+.sll-color-grid > label,
+.sll-alignment-grid > label {
+	font-weight: 600;
+}
+
+.sll-alignment-grid {
+	grid-template-columns: repeat(2, minmax(180px, 1fr));
+}
+
+.sll-alignment-grid select {
+	margin-top: 6px;
+	width: 100%;
+}
+
+.sll-link-control--disabled .sll-link-dependent,
+.sll-link-dependent--disabled {
+	opacity: 0.55;
+}
+
+@media (max-width: 782px) {
+	.sll-color-grid,
+	.sll-alignment-grid {
+		grid-template-columns: 1fr;
+	}
 }

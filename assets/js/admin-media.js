@@ -10,6 +10,8 @@
 	var $backgroundControl = $( '#sll-background-control' );
 	var $backgroundEnabled = $( '#sll-background-enabled' );
 	var $backgroundColor = $( '#sll-background-color' );
+	var $linkControl = $( '#sll-link-control' );
+	var $linkStyleEnabled = $( '#sll-link-style-enabled' );
 
 	function selectedSource() {
 		return $( 'input[name="sll_options[logo_source]"]:checked' ).val();
@@ -35,6 +37,11 @@
 		$previewContainer.css( 'background-color', isEnabled ? selectedColor : '' );
 	}
 
+	function updateLinkControls() {
+		$linkControl.toggleClass( 'sll-link-control--disabled', ! $linkStyleEnabled.prop( 'checked' ) );
+		$( '.sll-link-dependent' ).toggleClass( 'sll-link-dependent--disabled', ! $linkStyleEnabled.prop( 'checked' ) );
+	}
+
 	$backgroundColor.wpColorPicker( {
 		change: function ( event, ui ) {
 			updateBackgroundPreview( ui.color.toString() );
@@ -43,6 +50,8 @@
 			updateBackgroundPreview( $backgroundColor.data( 'default-color' ) );
 		}
 	} );
+
+	$( '.sll-link-color-field' ).wpColorPicker();
 
 	$( '#sll-select-logo' ).on( 'click', function ( event ) {
 		event.preventDefault();
@@ -83,6 +92,8 @@
 	$backgroundEnabled.on( 'change', function () {
 		updateBackgroundPreview();
 	} );
+	$linkStyleEnabled.on( 'change', updateLinkControls );
 
 	updateBackgroundPreview();
+	updateLinkControls();
 } )( jQuery );

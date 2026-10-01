@@ -2,8 +2,8 @@
 /**
  * Plugin Name:       Site Login Logo
  * Plugin URI:        https://yogaclassestoday.com/
- * Description:       Replaces the WordPress login logo and optionally overrides the login-page background color.
- * Version:           1.1.0
+ * Description:       Customizes the WordPress login logo, background, form appearance, and navigation links.
+ * Version:           1.2.0
  * Requires at least: 6.2
  * Requires PHP:      7.4
  * Author:            Kyle Hagel
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SLL_VERSION', '1.1.0' );
+define( 'SLL_VERSION', '1.2.0' );
 define( 'SLL_PLUGIN_FILE', __FILE__ );
 define( 'SLL_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SLL_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

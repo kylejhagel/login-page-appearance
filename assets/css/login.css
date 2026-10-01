@@ -1,8 +1,125 @@
-body.login #login h1 a {
+body.login.sll-custom-logo #login h1 a {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
 	box-sizing: border-box;
 	height: 80px;
 	width: 100%;
+}
+
+body.login.sll-soft-form #login form {
+	background: #fff;
+	border: 1px solid #e5e7eb;
+	border-radius: 1rem;
+	box-shadow: 0 10px 30px rgb(15 23 42 / 6%);
+	box-sizing: border-box;
+	padding: 1.5rem;
+}
+
+body.login.sll-soft-form #login form label {
+	color: #111827;
+	font-weight: 600;
+}
+
+body.login.sll-soft-form #login form input[type="text"],
+body.login.sll-soft-form #login form input[type="email"],
+body.login.sll-soft-form #login form input[type="password"] {
+	appearance: none;
+	background: #fff;
+	border: 1px solid #d1d5db;
+	border-radius: 0.75rem;
+	box-shadow: none;
+	box-sizing: border-box;
+	color: #111827;
+	font-family: inherit;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	margin: 0;
+	min-height: 44px;
+	padding: 0.75rem 0.875rem;
+	width: 100%;
+}
+
+body.login.sll-soft-form #login form input[type="password"] {
+	padding-right: 2.75rem;
+}
+
+body.login.sll-soft-form #login form input[type="text"]:focus,
+body.login.sll-soft-form #login form input[type="email"]:focus,
+body.login.sll-soft-form #login form input[type="password"]:focus {
+	border-color: #4f46e5;
+	box-shadow: 0 0 0 3px rgb(79 70 229 / 18%);
+	outline: 2px solid transparent;
+}
+
+body.login.sll-soft-form #login form input[type="checkbox"] {
+	accent-color: #2563eb;
+	appearance: auto;
+	background: #fff;
+	border: 1px solid #cbd5e1;
+	border-radius: 0.25rem;
+	box-shadow: none;
+	box-sizing: border-box;
+	cursor: pointer;
+	height: 1.25rem;
+	margin: 0 0.35rem 0 0;
+	min-width: 1.25rem;
+	padding: 0;
+	vertical-align: middle;
+	width: 1.25rem;
+}
+
+body.login.sll-soft-form #login form input[type="checkbox"]:focus-visible {
+	box-shadow: 0 0 0 3px rgb(37 99 235 / 24%);
+	outline: none;
+}
+
+body.login.sll-custom-links {
+	--sll-link-color: #0a4f42;
+	--sll-link-hover-color: #a9533a;
+	--sll-link-focus-color: #0a4f42;
+	--sll-nav-alignment: left;
+	--sll-back-link-alignment: left;
+}
+
+body.login.sll-custom-links #nav {
+	margin: 1.25rem 0 0;
+	padding: 0;
+	text-align: var(--sll-nav-alignment);
+}
+
+body.login.sll-custom-links #backtoblog {
+	margin: 1rem 0 0;
+	padding: 0;
+	text-align: var(--sll-back-link-alignment);
+}
+
+body.login.sll-custom-links #nav a,
+body.login.sll-custom-links #backtoblog a {
+	color: var(--sll-link-color);
+	font-weight: 700;
+	text-decoration: underline;
+	text-decoration-thickness: 0.08em;
+	text-underline-offset: 0.18em;
+}
+
+body.login.sll-custom-links #nav a:hover,
+body.login.sll-custom-links #backtoblog a:hover {
+	color: var(--sll-link-hover-color);
+}
+
+body.login.sll-custom-links #nav a:focus-visible,
+body.login.sll-custom-links #backtoblog a:focus-visible {
+	border-radius: 0.2rem;
+	box-shadow: none;
+	color: var(--sll-link-focus-color);
+	outline: 2px solid var(--sll-link-focus-color);
+	outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+	body.login.sll-soft-form #login form {
+		padding: 1.25rem;
+	}
 }
