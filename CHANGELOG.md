@@ -16,6 +16,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 ### Changed
 
 - Renamed the plugin to Simple WP Login Page to reflect its broader login-screen modernization scope.
+- Aligned the translation text domain with the `wp-site-login-logo` plugin slug.
 - The login stylesheet now loads whenever a logo, form, or link appearance feature needs it.
 - Logo sizing rules are scoped to an active custom logo so form-only styling cannot reshape the default WordPress logo.
 
