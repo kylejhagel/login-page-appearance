@@ -1,4 +1,4 @@
-=== Site Login Logo ===
+=== WP Site Login Logo ===
 Contributors: kylehagel
 Tags: login, logo, branding, custom logo, login form
 Requires at least: 6.2
@@ -12,7 +12,7 @@ Customize the WordPress login logo, background, form appearance, and navigation 
 
 == Description ==
 
-Site Login Logo provides a focused Settings > Login Logo screen for controlling the logo shown above the WordPress login form, the login-page background, and optional form and navigation-link styling.
+WP Site Login Logo provides a focused Settings > Login Logo screen for controlling the logo shown above the WordPress login form, the login-page background, and optional form and navigation-link styling.
 
 Features include:
 
@@ -35,7 +35,7 @@ The plugin stores Media Library attachment IDs rather than image URLs. When Site
 == Installation ==
 
 1. Upload the `site-login-logo` folder to `/wp-content/plugins/`, or install the ZIP through Plugins > Add New > Upload Plugin.
-2. Activate Site Login Logo.
+2. Activate WP Site Login Logo.
 3. Go to Settings > Login Logo.
 4. Confirm the logo source and save the settings.
 

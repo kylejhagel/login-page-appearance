@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to Site Login Logo are documented in this file.
+All notable changes to WP Site Login Logo are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -15,6 +15,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Changed
 
+- Standardized the public-facing plugin name as WP Site Login Logo.
 - The login stylesheet now loads whenever a logo, form, or link appearance feature needs it.
 - Logo sizing rules are scoped to an active custom logo so form-only styling cannot reshape the default WordPress logo.
 

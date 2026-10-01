@@ -1,2 +1,3 @@
-# wp-site-login-logo
-Simply add your logo on the WP login page
+# WP Site Login Logo
+
+Customize the WordPress login logo, background, form appearance, and navigation links.
