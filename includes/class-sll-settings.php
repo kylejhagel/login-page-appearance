@@ -1,8 +1,8 @@
 <?php
 /**
- * Admin settings for Simple WP Login Page.
+ * Admin settings for WP Login Page Appearance.
  *
- * @package Simple_WP_Login_Page
+ * @package WP_Login_Page_Appearance
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class SLL_Settings {
 	const OPTION_NAME = 'sll_options';
-	const PAGE_SLUG   = 'simple-wp-login-page';
+	const PAGE_SLUG   = 'wp-login-page-appearance';
 
 	/**
 	 * Registers admin hooks.
@@ -69,8 +69,8 @@ class SLL_Settings {
 	 */
 	public static function add_settings_page() {
 		add_options_page(
-			__( 'Simple WP Login Page', 'simple-wp-login-page' ),
-			__( 'Login Page', 'simple-wp-login-page' ),
+			__( 'WP Login Page Appearance', 'wp-login-page-appearance' ),
+			__( 'Login Page', 'wp-login-page-appearance' ),
 			'manage_options',
 			self::PAGE_SLUG,
 			array( __CLASS__, 'render_settings_page' )
@@ -93,28 +93,28 @@ class SLL_Settings {
 
 		add_settings_section(
 			'sll_logo_section',
-			__( 'Login branding settings', 'simple-wp-login-page' ),
+			__( 'Login branding settings', 'wp-login-page-appearance' ),
 			array( __CLASS__, 'render_section_description' ),
 			self::PAGE_SLUG
 		);
 
-		add_settings_field( 'sll_enabled', __( 'Login logo', 'simple-wp-login-page' ), array( __CLASS__, 'render_enabled_field' ), self::PAGE_SLUG, 'sll_logo_section' );
-		add_settings_field( 'sll_logo_source', __( 'Logo source', 'simple-wp-login-page' ), array( __CLASS__, 'render_logo_source_field' ), self::PAGE_SLUG, 'sll_logo_section' );
-		add_settings_field( 'sll_custom_logo', __( 'Custom logo', 'simple-wp-login-page' ), array( __CLASS__, 'render_custom_logo_field' ), self::PAGE_SLUG, 'sll_logo_section' );
-		add_settings_field( 'sll_background', __( 'Login background', 'simple-wp-login-page' ), array( __CLASS__, 'render_background_field' ), self::PAGE_SLUG, 'sll_logo_section' );
-		add_settings_field( 'sll_logo_width', __( 'Logo width', 'simple-wp-login-page' ), array( __CLASS__, 'render_logo_width_field' ), self::PAGE_SLUG, 'sll_logo_section' );
-		add_settings_field( 'sll_logo_link', __( 'Logo link', 'simple-wp-login-page' ), array( __CLASS__, 'render_logo_link_field' ), self::PAGE_SLUG, 'sll_logo_section' );
+		add_settings_field( 'sll_enabled', __( 'Login logo', 'wp-login-page-appearance' ), array( __CLASS__, 'render_enabled_field' ), self::PAGE_SLUG, 'sll_logo_section' );
+		add_settings_field( 'sll_logo_source', __( 'Logo source', 'wp-login-page-appearance' ), array( __CLASS__, 'render_logo_source_field' ), self::PAGE_SLUG, 'sll_logo_section' );
+		add_settings_field( 'sll_custom_logo', __( 'Custom logo', 'wp-login-page-appearance' ), array( __CLASS__, 'render_custom_logo_field' ), self::PAGE_SLUG, 'sll_logo_section' );
+		add_settings_field( 'sll_background', __( 'Login background', 'wp-login-page-appearance' ), array( __CLASS__, 'render_background_field' ), self::PAGE_SLUG, 'sll_logo_section' );
+		add_settings_field( 'sll_logo_width', __( 'Logo width', 'wp-login-page-appearance' ), array( __CLASS__, 'render_logo_width_field' ), self::PAGE_SLUG, 'sll_logo_section' );
+		add_settings_field( 'sll_logo_link', __( 'Logo link', 'wp-login-page-appearance' ), array( __CLASS__, 'render_logo_link_field' ), self::PAGE_SLUG, 'sll_logo_section' );
 
 		add_settings_section(
 			'sll_appearance_section',
-			__( 'Login form appearance', 'simple-wp-login-page' ),
+			__( 'Login form appearance', 'wp-login-page-appearance' ),
 			array( __CLASS__, 'render_appearance_section_description' ),
 			self::PAGE_SLUG
 		);
 
-		add_settings_field( 'sll_form_style', __( 'Form styling', 'simple-wp-login-page' ), array( __CLASS__, 'render_form_style_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
-		add_settings_field( 'sll_link_style', __( 'Login links', 'simple-wp-login-page' ), array( __CLASS__, 'render_link_style_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
-		add_settings_field( 'sll_link_alignment', __( 'Link alignment', 'simple-wp-login-page' ), array( __CLASS__, 'render_link_alignment_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
+		add_settings_field( 'sll_form_style', __( 'Form styling', 'wp-login-page-appearance' ), array( __CLASS__, 'render_form_style_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
+		add_settings_field( 'sll_link_style', __( 'Login links', 'wp-login-page-appearance' ), array( __CLASS__, 'render_link_style_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
+		add_settings_field( 'sll_link_alignment', __( 'Link alignment', 'wp-login-page-appearance' ), array( __CLASS__, 'render_link_alignment_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
 	}
 
 	/**
@@ -189,10 +189,10 @@ class SLL_Settings {
 			'sll-admin-media',
 			'sllAdmin',
 			array(
-				'frameTitle'  => __( 'Choose a login logo', 'simple-wp-login-page' ),
-				'frameButton' => __( 'Use this logo', 'simple-wp-login-page' ),
+				'frameTitle'  => __( 'Choose a login logo', 'wp-login-page-appearance' ),
+				'frameButton' => __( 'Use this logo', 'wp-login-page-appearance' ),
 				'siteLogoUrl' => self::get_attachment_url( absint( get_theme_mod( 'custom_logo', 0 ) ) ),
-				'noLogoText'  => __( 'No logo is currently available for this source.', 'simple-wp-login-page' ),
+				'noLogoText'  => __( 'No logo is currently available for this source.', 'wp-login-page-appearance' ),
 			)
 		);
 	}
@@ -210,11 +210,11 @@ class SLL_Settings {
 	}
 
 	public static function render_section_description() {
-		echo '<p>' . esc_html__( 'Use the active theme’s Site Logo or a Media Library image, and optionally override the login-page background color.', 'simple-wp-login-page' ) . '</p>';
+		echo '<p>' . esc_html__( 'Use the active theme’s Site Logo or a Media Library image, and optionally override the login-page background color.', 'wp-login-page-appearance' ) . '</p>';
 	}
 
 	public static function render_appearance_section_description() {
-		echo '<p>' . esc_html__( 'Optionally apply the Yoga Class Today form treatment and control the login navigation links without changing WordPress login markup.', 'simple-wp-login-page' ) . '</p>';
+		echo '<p>' . esc_html__( 'Optionally apply the Yoga Class Today form treatment and control the login navigation links without changing WordPress login markup.', 'wp-login-page-appearance' ) . '</p>';
 	}
 
 	public static function render_enabled_field() {
@@ -222,7 +222,7 @@ class SLL_Settings {
 		?>
 		<label>
 			<input type="checkbox" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[enabled]" value="1" <?php checked( 1, $options['enabled'] ); ?>>
-			<?php esc_html_e( 'Replace the default WordPress login logo', 'simple-wp-login-page' ); ?>
+			<?php esc_html_e( 'Replace the default WordPress login logo', 'wp-login-page-appearance' ); ?>
 		</label>
 		<?php
 	}
@@ -233,11 +233,11 @@ class SLL_Settings {
 		<fieldset id="sll-logo-source">
 			<label>
 				<input type="radio" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[logo_source]" value="site_logo" <?php checked( 'site_logo', $options['logo_source'] ); ?>>
-				<?php esc_html_e( 'Use the current Site Logo', 'simple-wp-login-page' ); ?>
+				<?php esc_html_e( 'Use the current Site Logo', 'wp-login-page-appearance' ); ?>
 			</label><br>
 			<label>
 				<input type="radio" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[logo_source]" value="custom" <?php checked( 'custom', $options['logo_source'] ); ?>>
-				<?php esc_html_e( 'Choose a different Media Library image', 'simple-wp-login-page' ); ?>
+				<?php esc_html_e( 'Choose a different Media Library image', 'wp-login-page-appearance' ); ?>
 			</label>
 		</fieldset>
 		<?php
@@ -253,14 +253,14 @@ class SLL_Settings {
 		<div class="sll-media-control">
 			<input type="hidden" id="sll-custom-logo-id" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[custom_logo_id]" value="<?php echo esc_attr( $options['custom_logo_id'] ); ?>" data-custom-logo-url="<?php echo esc_url( $custom_logo_url ); ?>">
 			<div class="sll-logo-preview" aria-live="polite"<?php echo ! empty( $options['background_enabled'] ) ? ' style="background-color: ' . esc_attr( $options['background_color'] ) . ';"' : ''; ?>>
-				<img id="sll-logo-preview-image" src="<?php echo esc_url( $preview_url ); ?>" alt="<?php esc_attr_e( 'Login logo preview', 'simple-wp-login-page' ); ?>" <?php echo $preview_is_hidden ? 'hidden' : ''; ?>>
-				<p id="sll-logo-preview-empty" <?php echo $preview_is_hidden ? '' : 'hidden'; ?>><?php esc_html_e( 'No logo is currently available for this source.', 'simple-wp-login-page' ); ?></p>
+				<img id="sll-logo-preview-image" src="<?php echo esc_url( $preview_url ); ?>" alt="<?php esc_attr_e( 'Login logo preview', 'wp-login-page-appearance' ); ?>" <?php echo $preview_is_hidden ? 'hidden' : ''; ?>>
+				<p id="sll-logo-preview-empty" <?php echo $preview_is_hidden ? '' : 'hidden'; ?>><?php esc_html_e( 'No logo is currently available for this source.', 'wp-login-page-appearance' ); ?></p>
 			</div>
 			<p>
-				<button type="button" class="button" id="sll-select-logo"><?php esc_html_e( 'Choose image', 'simple-wp-login-page' ); ?></button>
-				<button type="button" class="button-link-delete" id="sll-remove-logo" <?php echo empty( $options['custom_logo_id'] ) ? 'hidden' : ''; ?>><?php esc_html_e( 'Remove custom image', 'simple-wp-login-page' ); ?></button>
+				<button type="button" class="button" id="sll-select-logo"><?php esc_html_e( 'Choose image', 'wp-login-page-appearance' ); ?></button>
+				<button type="button" class="button-link-delete" id="sll-remove-logo" <?php echo empty( $options['custom_logo_id'] ) ? 'hidden' : ''; ?>><?php esc_html_e( 'Remove custom image', 'wp-login-page-appearance' ); ?></button>
 			</p>
-			<p class="description"><?php esc_html_e( 'The custom image is used only when “Choose a different Media Library image” is selected.', 'simple-wp-login-page' ); ?></p>
+			<p class="description"><?php esc_html_e( 'The custom image is used only when “Choose a different Media Library image” is selected.', 'wp-login-page-appearance' ); ?></p>
 		</div>
 		<?php
 	}
@@ -274,13 +274,13 @@ class SLL_Settings {
 		<div id="sll-background-control" class="sll-background-control<?php echo empty( $options['background_enabled'] ) ? ' sll-background-control--disabled' : ''; ?>">
 			<label class="sll-background-toggle">
 				<input type="checkbox" id="sll-background-enabled" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[background_enabled]" value="1" <?php checked( 1, $options['background_enabled'] ); ?>>
-				<?php esc_html_e( 'Override the default WordPress login background color', 'simple-wp-login-page' ); ?>
+				<?php esc_html_e( 'Override the default WordPress login background color', 'wp-login-page-appearance' ); ?>
 			</label>
 			<div class="sll-background-picker">
-				<label for="sll-background-color"><?php esc_html_e( 'Background color', 'simple-wp-login-page' ); ?></label><br>
+				<label for="sll-background-color"><?php esc_html_e( 'Background color', 'wp-login-page-appearance' ); ?></label><br>
 				<input type="text" id="sll-background-color" class="sll-color-field" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[background_color]" value="<?php echo esc_attr( $options['background_color'] ); ?>" data-default-color="#f0f0f1">
 			</div>
-			<p class="description"><?php esc_html_e( 'Uncheck the override to return control of the background to WordPress. Confirm that the selected color maintains sufficient contrast with the login-page text and links.', 'simple-wp-login-page' ); ?></p>
+			<p class="description"><?php esc_html_e( 'Uncheck the override to return control of the background to WordPress. Confirm that the selected color maintains sufficient contrast with the login-page text and links.', 'wp-login-page-appearance' ); ?></p>
 		</div>
 		<?php
 	}
@@ -289,7 +289,7 @@ class SLL_Settings {
 		$options = self::get_options();
 		?>
 		<input type="number" class="small-text" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[logo_width]" value="<?php echo esc_attr( $options['logo_width'] ); ?>" min="80" max="400" step="1"> px
-		<p class="description"><?php esc_html_e( 'Maximum width between 80 and 400 pixels. Default: 280.', 'simple-wp-login-page' ); ?></p>
+		<p class="description"><?php esc_html_e( 'Maximum width between 80 and 400 pixels. Default: 280.', 'wp-login-page-appearance' ); ?></p>
 		<?php
 	}
 
@@ -297,8 +297,8 @@ class SLL_Settings {
 		$options = self::get_options();
 		?>
 		<select name="<?php echo esc_attr( self::OPTION_NAME ); ?>[logo_link]">
-			<option value="home" <?php selected( 'home', $options['logo_link'] ); ?>><?php esc_html_e( 'Site homepage', 'simple-wp-login-page' ); ?></option>
-			<option value="wordpress" <?php selected( 'wordpress', $options['logo_link'] ); ?>><?php esc_html_e( 'WordPress.org (default)', 'simple-wp-login-page' ); ?></option>
+			<option value="home" <?php selected( 'home', $options['logo_link'] ); ?>><?php esc_html_e( 'Site homepage', 'wp-login-page-appearance' ); ?></option>
+			<option value="wordpress" <?php selected( 'wordpress', $options['logo_link'] ); ?>><?php esc_html_e( 'WordPress.org (default)', 'wp-login-page-appearance' ); ?></option>
 		</select>
 		<?php
 	}
@@ -308,9 +308,9 @@ class SLL_Settings {
 		?>
 		<label>
 			<input type="checkbox" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[form_style_enabled]" value="1" <?php checked( 1, $options['form_style_enabled'] ); ?>>
-			<?php esc_html_e( 'Use the softened YCT form and input styling', 'simple-wp-login-page' ); ?>
+			<?php esc_html_e( 'Use the softened YCT form and input styling', 'wp-login-page-appearance' ); ?>
 		</label>
-		<p class="description"><?php esc_html_e( 'Applies rounded fields, softer borders and shadows, and a visible focus ring to WordPress login, registration, and password forms.', 'simple-wp-login-page' ); ?></p>
+		<p class="description"><?php esc_html_e( 'Applies rounded fields, softer borders and shadows, and a visible focus ring to WordPress login, registration, and password forms.', 'wp-login-page-appearance' ); ?></p>
 		<?php
 	}
 
@@ -320,23 +320,23 @@ class SLL_Settings {
 		<div id="sll-link-control" class="sll-link-control<?php echo empty( $options['link_style_enabled'] ) ? ' sll-link-control--disabled' : ''; ?>">
 			<label class="sll-control-toggle">
 				<input type="checkbox" id="sll-link-style-enabled" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[link_style_enabled]" value="1" <?php checked( 1, $options['link_style_enabled'] ); ?>>
-				<?php esc_html_e( 'Override the lost-password and back-to-site link styles', 'simple-wp-login-page' ); ?>
+				<?php esc_html_e( 'Override the lost-password and back-to-site link styles', 'wp-login-page-appearance' ); ?>
 			</label>
 			<div class="sll-link-dependent sll-color-grid">
 				<label for="sll-link-color">
-					<?php esc_html_e( 'Link color', 'simple-wp-login-page' ); ?><br>
+					<?php esc_html_e( 'Link color', 'wp-login-page-appearance' ); ?><br>
 					<input type="text" id="sll-link-color" class="sll-link-color-field" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[link_color]" value="<?php echo esc_attr( $options['link_color'] ); ?>" data-default-color="#0a4f42">
 				</label>
 				<label for="sll-link-hover-color">
-					<?php esc_html_e( 'Hover color', 'simple-wp-login-page' ); ?><br>
+					<?php esc_html_e( 'Hover color', 'wp-login-page-appearance' ); ?><br>
 					<input type="text" id="sll-link-hover-color" class="sll-link-color-field" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[link_hover_color]" value="<?php echo esc_attr( $options['link_hover_color'] ); ?>" data-default-color="#a9533a">
 				</label>
 				<label for="sll-link-focus-color">
-					<?php esc_html_e( 'Keyboard focus color', 'simple-wp-login-page' ); ?><br>
+					<?php esc_html_e( 'Keyboard focus color', 'wp-login-page-appearance' ); ?><br>
 					<input type="text" id="sll-link-focus-color" class="sll-link-color-field" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[link_focus_color]" value="<?php echo esc_attr( $options['link_focus_color'] ); ?>" data-default-color="#0a4f42">
 				</label>
 			</div>
-			<p class="description"><?php esc_html_e( 'These colors target links inside #nav and #backtoblog, including hover and keyboard-focus states.', 'simple-wp-login-page' ); ?></p>
+			<p class="description"><?php esc_html_e( 'These colors target links inside #nav and #backtoblog, including hover and keyboard-focus states.', 'wp-login-page-appearance' ); ?></p>
 		</div>
 		<?php
 	}
@@ -344,14 +344,14 @@ class SLL_Settings {
 	public static function render_link_alignment_field() {
 		$options    = self::get_options();
 		$alignments = array(
-			'left'   => __( 'Left', 'simple-wp-login-page' ),
-			'center' => __( 'Center', 'simple-wp-login-page' ),
-			'right'  => __( 'Right', 'simple-wp-login-page' ),
+			'left'   => __( 'Left', 'wp-login-page-appearance' ),
+			'center' => __( 'Center', 'wp-login-page-appearance' ),
+			'right'  => __( 'Right', 'wp-login-page-appearance' ),
 		);
 		?>
 		<div class="sll-link-dependent sll-alignment-grid<?php echo empty( $options['link_style_enabled'] ) ? ' sll-link-dependent--disabled' : ''; ?>">
 			<label for="sll-nav-alignment">
-				<?php esc_html_e( 'Lost-password/navigation links', 'simple-wp-login-page' ); ?><br>
+				<?php esc_html_e( 'Lost-password/navigation links', 'wp-login-page-appearance' ); ?><br>
 				<select id="sll-nav-alignment" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[nav_alignment]">
 					<?php foreach ( $alignments as $value => $label ) : ?>
 						<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $options['nav_alignment'] ); ?>><?php echo esc_html( $label ); ?></option>
@@ -359,7 +359,7 @@ class SLL_Settings {
 				</select>
 			</label>
 			<label for="sll-back-link-alignment">
-				<?php esc_html_e( 'Back-to-site link', 'simple-wp-login-page' ); ?><br>
+				<?php esc_html_e( 'Back-to-site link', 'wp-login-page-appearance' ); ?><br>
 				<select id="sll-back-link-alignment" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[back_link_alignment]">
 					<?php foreach ( $alignments as $value => $label ) : ?>
 						<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $options['back_link_alignment'] ); ?>><?php echo esc_html( $label ); ?></option>
@@ -367,7 +367,7 @@ class SLL_Settings {
 				</select>
 			</label>
 		</div>
-		<p class="description"><?php esc_html_e( 'Alignment is responsive-safe and does not use absolute positioning or custom offsets.', 'simple-wp-login-page' ); ?></p>
+		<p class="description"><?php esc_html_e( 'Alignment is responsive-safe and does not use absolute positioning or custom offsets.', 'wp-login-page-appearance' ); ?></p>
 		<?php
 	}
 
@@ -380,7 +380,7 @@ class SLL_Settings {
 		}
 		?>
 		<div class="wrap sll-settings-wrap">
-			<h1><?php esc_html_e( 'Simple WP Login Page', 'simple-wp-login-page' ); ?></h1>
+			<h1><?php esc_html_e( 'WP Login Page Appearance', 'wp-login-page-appearance' ); ?></h1>
 			<?php settings_errors(); ?>
 			<form action="options.php" method="post">
 				<?php

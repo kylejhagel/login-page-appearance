@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to Simple WP Login Page are documented in this file.
+All notable changes to WP Login Page Appearance are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -15,8 +15,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Changed
 
-- Renamed the plugin to Simple WP Login Page to reflect its broader login-screen modernization scope.
-- Renamed the plugin folder, main file, settings-page slug, and translation text domain to `simple-wp-login-page`.
+- Renamed the plugin to WP Login Page Appearance to reflect its broader login-screen modernization scope.
+- Renamed the plugin folder, main file, settings-page slug, and translation text domain to `wp-login-page-appearance`.
 - The login stylesheet now loads whenever a logo, form, or link appearance feature needs it.
 - Logo sizing rules are scoped to an active custom logo so form-only styling cannot reshape the default WordPress logo.
 

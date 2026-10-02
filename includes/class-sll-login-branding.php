@@ -2,7 +2,7 @@
 /**
  * Login-screen branding behavior.
  *
- * @package Simple_WP_Login_Page
+ * @package WP_Login_Page_Appearance
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

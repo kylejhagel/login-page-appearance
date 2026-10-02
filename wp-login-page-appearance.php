@@ -1,15 +1,15 @@
 <?php
 /**
- * Plugin Name:       Simple WP Login Page
- * Plugin URI:        https://github.com/kylejhagel/simple-wp-login-page
+ * Plugin Name:       WP Login Page Appearance
+ * Plugin URI:        https://github.com/kylejhagel/wp-login-page-appearance
  * Description:       Modernizes the default WordPress login screen with custom branding, softened form styles, and accessible link controls.
  * Version:           1.2.0
  * Requires at least: 6.2
  * Requires PHP:      7.4
- * Author:            Kyle Hagel
+ * Author:            Kyle J. Hagel
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       simple-wp-login-page
+ * Text Domain:       wp-login-page-appearance
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
