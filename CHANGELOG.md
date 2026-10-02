@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to WP Login Page Appearance are documented in this file.
+All notable changes to Login Page Appearance are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -12,11 +12,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Configurable normal, hover, and keyboard-focus colors for login navigation links.
 - Independent left, center, or right alignment for the navigation and back-to-site link groups.
 - Conditional login body classes that isolate logo, form, and link appearance rules.
+- A WordPress.org release checklist covering current Plugin Check, directory guidance, security, accessibility, internationalization, compatibility, and packaging reviews.
 
 ### Changed
 
-- Renamed the plugin to WP Login Page Appearance to reflect its broader login-screen modernization scope.
-- Renamed the plugin folder, main file, settings-page slug, and translation text domain to `wp-login-page-appearance`.
+- Renamed the plugin to Login Page Appearance to reflect its broader login-screen modernization scope.
+- Renamed the plugin folder, main file, settings-page slug, and translation text domain to `login-page-appearance`.
 - The login stylesheet now loads whenever a logo, form, or link appearance feature needs it.
 - Logo sizing rules are scoped to an active custom logo so form-only styling cannot reshape the default WordPress logo.
 

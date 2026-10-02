@@ -1,4 +1,4 @@
-=== WP Login Page Appearance ===
+=== Login Page Appearance ===
 Contributors: kylehagel
 Tags: login, logo, branding, custom logo, login form
 Requires at least: 6.2
@@ -12,7 +12,7 @@ Modernize the default WordPress login screen with simple branding and form appea
 
 == Description ==
 
-WP Login Page Appearance provides focused controls for modernizing the default WordPress login screen without replacing WordPress authentication or loading a full design framework.
+Login Page Appearance provides focused controls for modernizing the default WordPress login screen without replacing WordPress authentication or loading a full design framework.
 
 Features include:
 
@@ -34,8 +34,8 @@ The plugin stores Media Library attachment IDs rather than image URLs. When Site
 
 == Installation ==
 
-1. Upload the `wp-login-page-appearance` folder to `/wp-content/plugins/`, or install the ZIP through Plugins > Add New > Upload Plugin.
-2. Activate WP Login Page Appearance.
+1. Upload the `login-page-appearance` folder to `/wp-content/plugins/`, or install the ZIP through Plugins > Add New > Upload Plugin.
+2. Activate Login Page Appearance.
 3. Go to Settings > Login Page.
 4. Confirm the logo source and save the settings.
 
