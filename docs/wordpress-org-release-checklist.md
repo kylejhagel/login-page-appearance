@@ -16,6 +16,7 @@ Use this checklist before every public release or WordPress.org submission. Pass
 - Confirm the plugin URI and source-code links are current and public.
 - Keep the `Version:` header, `Stable tag`, changelog, and release tag synchronized.
 - Confirm the ZIP contains one correctly named plugin directory and excludes development-only files and generated clutter.
+- Confirm the production package contains no hidden files such as `.gitignore` or `.distignore`, and no version-control directories.
 - Confirm licensing and third-party assets are GPL-compatible and documented.
 
 ## Code quality and security
