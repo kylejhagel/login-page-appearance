@@ -57,7 +57,7 @@ class SLL_Login_Branding {
 		$options         = SLL_Settings::get_options();
 		$logo_id         = self::get_logo_id();
 		$logo_url        = $logo_id && wp_attachment_is_image( $logo_id ) ? wp_get_attachment_image_url( $logo_id, 'full' ) : '';
-		$use_stylesheet  = $logo_url || ! empty( $options['form_style_enabled'] ) || ! empty( $options['link_style_enabled'] );
+		$use_stylesheet  = $logo_url || ! empty( $options['form_style_enabled'] ) || ! empty( $options['form_width_enabled'] ) || ! empty( $options['link_style_enabled'] );
 		$css_rules       = array();
 
 		if ( $logo_url ) {
@@ -72,6 +72,11 @@ class SLL_Login_Branding {
 			if ( $background_color ) {
 				$css_rules[] = 'body.login { background-color: ' . $background_color . '; }';
 			}
+		}
+
+		if ( ! empty( $options['form_width_enabled'] ) ) {
+			$form_width  = max( 320, min( 640, absint( $options['form_width'] ) ) );
+			$css_rules[] = 'body.login.sll-custom-form-width { --sll-form-width: ' . $form_width . 'px; }';
 		}
 
 		if ( ! empty( $options['link_style_enabled'] ) ) {
@@ -127,6 +132,10 @@ class SLL_Login_Branding {
 
 		if ( ! empty( $options['form_style_enabled'] ) ) {
 			$classes[] = 'sll-soft-form';
+		}
+
+		if ( ! empty( $options['form_width_enabled'] ) ) {
+			$classes[] = 'sll-custom-form-width';
 		}
 
 		if ( ! empty( $options['link_style_enabled'] ) ) {

@@ -10,6 +10,8 @@
 	var $backgroundControl = $( '#sll-background-control' );
 	var $backgroundEnabled = $( '#sll-background-enabled' );
 	var $backgroundColor = $( '#sll-background-color' );
+	var $formWidthControl = $( '#sll-form-width-control' );
+	var $formWidthEnabled = $( '#sll-form-width-enabled' );
 	var $linkControl = $( '#sll-link-control' );
 	var $linkStyleEnabled = $( '#sll-link-style-enabled' );
 
@@ -40,6 +42,10 @@
 	function updateLinkControls() {
 		$linkControl.toggleClass( 'sll-link-control--disabled', ! $linkStyleEnabled.prop( 'checked' ) );
 		$( '.sll-link-dependent' ).toggleClass( 'sll-link-dependent--disabled', ! $linkStyleEnabled.prop( 'checked' ) );
+	}
+
+	function updateFormWidthControl() {
+		$formWidthControl.toggleClass( 'sll-form-width-control--disabled', ! $formWidthEnabled.prop( 'checked' ) );
 	}
 
 	$backgroundColor.wpColorPicker( {
@@ -92,8 +98,10 @@
 	$backgroundEnabled.on( 'change', function () {
 		updateBackgroundPreview();
 	} );
+	$formWidthEnabled.on( 'change', updateFormWidthControl );
 	$linkStyleEnabled.on( 'change', updateLinkControls );
 
 	updateBackgroundPreview();
+	updateFormWidthControl();
 	updateLinkControls();
 } )( jQuery );

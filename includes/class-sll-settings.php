@@ -44,6 +44,8 @@ class SLL_Settings {
 			'logo_width'           => 280,
 			'logo_link'            => 'home',
 			'form_style_enabled'   => 0,
+			'form_width_enabled'   => 0,
+			'form_width'           => 420,
 			'link_style_enabled'   => 0,
 			'link_color'           => '#0a4f42',
 			'link_hover_color'     => '#a9533a',
@@ -113,6 +115,7 @@ class SLL_Settings {
 		);
 
 		add_settings_field( 'sll_form_style', __( 'Form styling', 'login-page-appearance' ), array( __CLASS__, 'render_form_style_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
+		add_settings_field( 'sll_form_width', __( 'Login page width', 'login-page-appearance' ), array( __CLASS__, 'render_form_width_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
 		add_settings_field( 'sll_link_style', __( 'Login links', 'login-page-appearance' ), array( __CLASS__, 'render_link_style_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
 		add_settings_field( 'sll_link_alignment', __( 'Link alignment', 'login-page-appearance' ), array( __CLASS__, 'render_link_alignment_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
 	}
@@ -129,6 +132,7 @@ class SLL_Settings {
 		$source              = isset( $input['logo_source'] ) ? sanitize_key( $input['logo_source'] ) : $defaults['logo_source'];
 		$link                = isset( $input['logo_link'] ) ? sanitize_key( $input['logo_link'] ) : $defaults['logo_link'];
 		$width               = isset( $input['logo_width'] ) ? absint( $input['logo_width'] ) : $defaults['logo_width'];
+		$form_width          = isset( $input['form_width'] ) ? absint( $input['form_width'] ) : $defaults['form_width'];
 		$background_color    = isset( $input['background_color'] ) ? sanitize_hex_color( $input['background_color'] ) : $defaults['background_color'];
 		$link_color          = isset( $input['link_color'] ) ? sanitize_hex_color( $input['link_color'] ) : $defaults['link_color'];
 		$link_hover_color    = isset( $input['link_hover_color'] ) ? sanitize_hex_color( $input['link_hover_color'] ) : $defaults['link_hover_color'];
@@ -162,6 +166,8 @@ class SLL_Settings {
 			'logo_width'          => max( 80, min( 400, $width ) ),
 			'logo_link'           => in_array( $link, array( 'home', 'wordpress' ), true ) ? $link : $defaults['logo_link'],
 			'form_style_enabled'  => empty( $input['form_style_enabled'] ) ? 0 : 1,
+			'form_width_enabled'  => empty( $input['form_width_enabled'] ) ? 0 : 1,
+			'form_width'          => max( 320, min( 640, $form_width ) ),
 			'link_style_enabled'  => empty( $input['link_style_enabled'] ) ? 0 : 1,
 			'link_color'          => $link_color,
 			'link_hover_color'    => $link_hover_color,
@@ -311,6 +317,23 @@ class SLL_Settings {
 			<?php esc_html_e( 'Use the softened YCT form and input styling', 'login-page-appearance' ); ?>
 		</label>
 		<p class="description"><?php esc_html_e( 'Applies rounded fields, softer borders and shadows, and a visible focus ring to WordPress login, registration, and password forms.', 'login-page-appearance' ); ?></p>
+		<?php
+	}
+
+	public static function render_form_width_field() {
+		$options = self::get_options();
+		?>
+		<div id="sll-form-width-control" class="sll-form-width-control<?php echo empty( $options['form_width_enabled'] ) ? ' sll-form-width-control--disabled' : ''; ?>">
+			<label class="sll-control-toggle">
+				<input type="checkbox" id="sll-form-width-enabled" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[form_width_enabled]" value="1" <?php checked( 1, $options['form_width_enabled'] ); ?>>
+				<?php esc_html_e( 'Override the default WordPress login page width', 'login-page-appearance' ); ?>
+			</label>
+			<div class="sll-form-width-value">
+				<label for="sll-form-width"><?php esc_html_e( 'Maximum width', 'login-page-appearance' ); ?></label><br>
+				<input type="number" id="sll-form-width" class="small-text" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[form_width]" value="<?php echo esc_attr( $options['form_width'] ); ?>" min="320" max="640" step="1"> px
+			</div>
+			<p class="description"><?php esc_html_e( 'Between 320 and 640 pixels. The layout retains safe side spacing on smaller screens. Default: 420.', 'login-page-appearance' ); ?></p>
+		</div>
 		<?php
 	}
 

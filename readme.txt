@@ -27,6 +27,7 @@ Features include:
 * Use the site name as accessible link text when a custom logo is active.
 * Fall back to the standard WordPress logo when the selected image is missing.
 * Apply an optional softened form preset based on the Yoga Class Today form system.
+* Optionally set a responsive login-page width between 320 and 640 pixels.
 * Style lost-password and back-to-site links with independent normal, hover, and keyboard-focus colors.
 * Align the login navigation and back-to-site links independently without absolute positioning.
 
@@ -51,7 +52,7 @@ The plugin leaves the default WordPress login logo in place.
 
 = Does this redesign the login form? =
 
-Only when the optional form preset is enabled. The preset softens the WordPress login, registration, and password forms with rounded fields, subtle borders and shadows, and visible focus rings. It does not replace WordPress login markup or load Tailwind or Flowbite assets.
+Only when the optional appearance controls are enabled. The form preset adds rounded fields, subtle borders and shadows, and visible focus rings. The independent width control can widen the complete login wrapper while retaining responsive side spacing. Neither option replaces WordPress login markup or loads Tailwind or Flowbite assets.
 
 = Does it support multisite network-wide settings? =
 
@@ -61,6 +62,7 @@ No. The plugin stores settings per site.
 
 = 1.2.0 =
 * Added optional YCT-inspired styling for WordPress login, registration, and password forms.
+* Added an optional responsive login-page width control with a 320-to-640-pixel range.
 * Added configurable normal, hover, and keyboard-focus colors for login navigation links.
 * Added independent left, center, or right alignment for navigation and back-to-site links.
 * Scoped all appearance rules with conditional login body classes.

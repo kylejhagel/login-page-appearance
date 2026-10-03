@@ -7,6 +7,12 @@ body.login.sll-custom-logo #login h1 a {
 	width: 100%;
 }
 
+body.login.sll-custom-form-width:not(.interim-login):not(.login-action-confirm_admin_email) #login {
+	box-sizing: border-box;
+	max-width: var(--sll-form-width);
+	width: calc(100% - 2rem);
+}
+
 body.login.sll-soft-form #login form {
 	background: #fff;
 	border: 1px solid #e5e7eb;

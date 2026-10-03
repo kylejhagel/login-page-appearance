@@ -46,6 +46,16 @@
 	transition: opacity 0.15s ease-in-out;
 }
 
+.sll-form-width-value {
+	transition: opacity 0.15s ease-in-out;
+}
+
+.sll-form-width-value > label {
+	display: inline-block;
+	font-weight: 600;
+	margin-bottom: 6px;
+}
+
 .sll-background-picker > label {
 	display: inline-block;
 	font-weight: 600;
@@ -53,6 +63,10 @@
 }
 
 .sll-background-control--disabled .sll-background-picker {
+	opacity: 0.55;
+}
+
+.sll-form-width-control--disabled .sll-form-width-value {
 	opacity: 0.55;
 }
 
