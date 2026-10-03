@@ -51,13 +51,14 @@ class SLL_Login_Branding {
 	}
 
 	/**
-	 * Enqueues tightly scoped login-page CSS and the selected logo URL.
+	 * Enqueues the login-page assets and adds selected values to the stylesheet.
 	 */
 	public static function enqueue_login_styles() {
 		$options         = SLL_Settings::get_options();
 		$logo_id         = self::get_logo_id();
 		$logo_url        = $logo_id && wp_attachment_is_image( $logo_id ) ? wp_get_attachment_image_url( $logo_id, 'full' ) : '';
-		$use_stylesheet  = $logo_url || ! empty( $options['form_style_enabled'] ) || ! empty( $options['form_width_enabled'] ) || ! empty( $options['link_style_enabled'] );
+		$split_links     = 'split' === $options['link_layout'];
+		$use_stylesheet  = $logo_url || ! empty( $options['form_style_enabled'] ) || ! empty( $options['form_width_enabled'] ) || ! empty( $options['link_style_enabled'] ) || $split_links;
 		$css_rules       = array();
 
 		if ( $logo_url ) {
@@ -115,6 +116,10 @@ class SLL_Login_Branding {
 				implode( "\n", $css_rules )
 			);
 		}
+
+		if ( $split_links ) {
+			wp_enqueue_script( 'sll-login-links', SLL_PLUGIN_URL . 'assets/js/login-links.js', array(), SLL_VERSION, true );
+		}
 	}
 
 	/**
@@ -140,6 +145,10 @@ class SLL_Login_Branding {
 
 		if ( ! empty( $options['link_style_enabled'] ) ) {
 			$classes[] = 'sll-custom-links';
+		}
+
+		if ( 'split' === $options['link_layout'] ) {
+			$classes[] = 'sll-split-links';
 		}
 
 		return array_unique( $classes );

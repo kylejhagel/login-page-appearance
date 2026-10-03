@@ -81,6 +81,28 @@ body.login.sll-soft-form #login form input[type="checkbox"]:focus-visible {
 	outline: none;
 }
 
+body.login.sll-split-links .sll-login-links {
+	display: flex;
+	gap: 1rem;
+	margin: 1.25rem 0 0;
+}
+
+body.login.sll-split-links .sll-login-links #nav,
+body.login.sll-split-links .sll-login-links #backtoblog {
+	box-sizing: border-box;
+	flex: 1 1 0;
+	min-width: 0;
+	padding: 0;
+}
+
+body.login.sll-split-links .sll-login-links #nav {
+	text-align: left;
+}
+
+body.login.sll-split-links .sll-login-links #backtoblog {
+	text-align: right;
+}
+
 body.login.sll-custom-links {
 	--sll-link-color: #0a4f42;
 	--sll-link-hover-color: #a9533a;
@@ -99,6 +121,11 @@ body.login.sll-custom-links #backtoblog {
 	margin: 1rem 0 0;
 	padding: 0;
 	text-align: var(--sll-back-link-alignment);
+}
+
+body.login.sll-split-links .sll-login-links #nav,
+body.login.sll-split-links .sll-login-links #backtoblog {
+	margin: 0;
 }
 
 body.login.sll-custom-links #nav a,
@@ -127,5 +154,16 @@ body.login.sll-custom-links #backtoblog a:focus-visible {
 @media (max-width: 480px) {
 	body.login.sll-soft-form #login form {
 		padding: 1.25rem;
+	}
+
+	body.login.sll-split-links .sll-login-links {
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	body.login.sll-split-links .sll-login-links #nav,
+	body.login.sll-split-links .sll-login-links #backtoblog {
+		flex-basis: auto;
+		width: 100%;
 	}
 }

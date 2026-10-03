@@ -46,6 +46,7 @@ class SLL_Settings {
 			'form_style_enabled'   => 0,
 			'form_width_enabled'   => 0,
 			'form_width'           => 420,
+			'link_layout'          => 'stacked',
 			'link_style_enabled'   => 0,
 			'link_color'           => '#0a4f42',
 			'link_hover_color'     => '#a9533a',
@@ -116,6 +117,14 @@ class SLL_Settings {
 
 		add_settings_field( 'sll_form_style', __( 'Form styling', 'login-page-appearance' ), array( __CLASS__, 'render_form_style_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
 		add_settings_field( 'sll_form_width', __( 'Login page width', 'login-page-appearance' ), array( __CLASS__, 'render_form_width_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
+		add_settings_field(
+			'sll_link_layout',
+			__( 'Login link layout', 'login-page-appearance' ),
+			array( __CLASS__, 'render_link_layout_field' ),
+			self::PAGE_SLUG,
+			'sll_appearance_section',
+			array( 'label_for' => 'sll-link-layout' )
+		);
 		add_settings_field( 'sll_link_style', __( 'Login links', 'login-page-appearance' ), array( __CLASS__, 'render_link_style_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
 		add_settings_field( 'sll_link_alignment', __( 'Link alignment', 'login-page-appearance' ), array( __CLASS__, 'render_link_alignment_field' ), self::PAGE_SLUG, 'sll_appearance_section' );
 	}
@@ -133,6 +142,7 @@ class SLL_Settings {
 		$link                = isset( $input['logo_link'] ) ? sanitize_key( $input['logo_link'] ) : $defaults['logo_link'];
 		$width               = isset( $input['logo_width'] ) ? absint( $input['logo_width'] ) : $defaults['logo_width'];
 		$form_width          = isset( $input['form_width'] ) ? absint( $input['form_width'] ) : $defaults['form_width'];
+		$link_layout         = isset( $input['link_layout'] ) ? sanitize_key( $input['link_layout'] ) : $defaults['link_layout'];
 		$background_color    = isset( $input['background_color'] ) ? sanitize_hex_color( $input['background_color'] ) : $defaults['background_color'];
 		$link_color          = isset( $input['link_color'] ) ? sanitize_hex_color( $input['link_color'] ) : $defaults['link_color'];
 		$link_hover_color    = isset( $input['link_hover_color'] ) ? sanitize_hex_color( $input['link_hover_color'] ) : $defaults['link_hover_color'];
@@ -168,6 +178,7 @@ class SLL_Settings {
 			'form_style_enabled'  => empty( $input['form_style_enabled'] ) ? 0 : 1,
 			'form_width_enabled'  => empty( $input['form_width_enabled'] ) ? 0 : 1,
 			'form_width'          => max( 320, min( 640, $form_width ) ),
+			'link_layout'         => in_array( $link_layout, array( 'stacked', 'split' ), true ) ? $link_layout : $defaults['link_layout'],
 			'link_style_enabled'  => empty( $input['link_style_enabled'] ) ? 0 : 1,
 			'link_color'          => $link_color,
 			'link_hover_color'    => $link_hover_color,
@@ -220,7 +231,7 @@ class SLL_Settings {
 	}
 
 	public static function render_appearance_section_description() {
-		echo '<p>' . esc_html__( 'Optionally apply the Yoga Class Today form treatment and control the login navigation links without changing WordPress login markup.', 'login-page-appearance' ) . '</p>';
+		echo '<p>' . esc_html__( 'Optionally apply the Yoga Class Today form treatment and control the appearance and layout of the login navigation links.', 'login-page-appearance' ) . '</p>';
 	}
 
 	public static function render_enabled_field() {
@@ -334,6 +345,20 @@ class SLL_Settings {
 			</div>
 			<p class="description"><?php esc_html_e( 'Between 320 and 640 pixels. The layout retains safe side spacing on smaller screens. Default: 420.', 'login-page-appearance' ); ?></p>
 		</div>
+		<?php
+	}
+
+	/**
+	 * Outputs the login navigation layout control.
+	 */
+	public static function render_link_layout_field() {
+		$options = self::get_options();
+		?>
+		<select id="sll-link-layout" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[link_layout]">
+			<option value="stacked" <?php selected( 'stacked', $options['link_layout'] ); ?>><?php esc_html_e( 'Stacked (WordPress default)', 'login-page-appearance' ); ?></option>
+			<option value="split" <?php selected( 'split', $options['link_layout'] ); ?>><?php esc_html_e( 'Split row', 'login-page-appearance' ); ?></option>
+		</select>
+		<p class="description"><?php esc_html_e( 'Places the login navigation and back-to-site links in two flexible columns. On narrow screens, the links return to a stacked layout.', 'login-page-appearance' ); ?></p>
 		<?php
 	}
 

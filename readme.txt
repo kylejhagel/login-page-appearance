@@ -28,6 +28,7 @@ Features include:
 * Fall back to the standard WordPress logo when the selected image is missing.
 * Apply an optional softened form preset based on the Yoga Class Today form system.
 * Optionally set a responsive login-page width between 320 and 640 pixels.
+* Optionally place the login navigation and back-to-site links in a responsive split row.
 * Style lost-password and back-to-site links with independent normal, hover, and keyboard-focus colors.
 * Align the login navigation and back-to-site links independently without absolute positioning.
 
@@ -52,7 +53,11 @@ The plugin leaves the default WordPress login logo in place.
 
 = Does this redesign the login form? =
 
-Only when the optional appearance controls are enabled. The form preset adds rounded fields, subtle borders and shadows, and visible focus rings. The independent width control can widen the complete login wrapper while retaining responsive side spacing. Neither option replaces WordPress login markup or loads Tailwind or Flowbite assets.
+Only when the optional appearance controls are enabled. The form preset adds rounded fields, subtle borders and shadows, and visible focus rings. The independent width control can widen the complete login wrapper while retaining responsive side spacing. These options do not load Tailwind or Flowbite assets.
+
+= How does the split login-link layout work? =
+
+When enabled, a small footer script moves WordPress's existing login navigation and back-to-site elements into a flexible two-column wrapper. It does not replace the links or their content. The layout returns to a single column on narrow screens and safely leaves the default markup unchanged if either link is unavailable.
 
 = Does it support multisite network-wide settings? =
 
@@ -63,6 +68,7 @@ No. The plugin stores settings per site.
 = 1.2.0 =
 * Added optional YCT-inspired styling for WordPress login, registration, and password forms.
 * Added an optional responsive login-page width control with a 320-to-640-pixel range.
+* Added an optional responsive split-row layout for the login navigation and back-to-site links.
 * Added configurable normal, hover, and keyboard-focus colors for login navigation links.
 * Added independent left, center, or right alignment for navigation and back-to-site links.
 * Scoped all appearance rules with conditional login body classes.

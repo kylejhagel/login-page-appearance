@@ -10,6 +10,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 - Optional YCT-inspired form treatment for WordPress login, registration, and password forms.
 - Optional responsive login-page width control with a configurable 320-to-640-pixel range.
+- Optional responsive split-row layout for the login navigation and back-to-site links.
 - Configurable normal, hover, and keyboard-focus colors for login navigation links.
 - Independent left, center, or right alignment for the navigation and back-to-site link groups.
 - Conditional login body classes that isolate logo, form, and link appearance rules.
