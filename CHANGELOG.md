@@ -19,6 +19,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Changed
 
+- Added consistent separation between the password field and login actions in the softened form preset.
 - Renamed the plugin to Login Page Appearance to reflect its broader login-screen modernization scope.
 - Renamed the plugin folder, main file, settings-page slug, and translation text domain to `login-page-appearance`.
 - Updated the declared WordPress compatibility through version 7.1.

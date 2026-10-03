@@ -75,6 +75,7 @@ No. The plugin stores settings per site.
 * Added an optional responsive login-page width control with a 320-to-640-pixel range.
 * Added an optional responsive split-row layout for the login navigation and back-to-site links.
 * Added a reversible action that restores the standard WordPress login appearance.
+* Added consistent spacing between the password field and login actions in the softened form preset.
 * Added configurable normal, hover, and keyboard-focus colors for login navigation links.
 * Added independent left, center, or right alignment for navigation and back-to-site links.
 * Scoped all appearance rules with conditional login body classes.
