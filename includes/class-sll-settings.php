@@ -20,6 +20,7 @@ class SLL_Settings {
 		add_action( 'admin_menu', array( __CLASS__, 'add_settings_page' ) );
 		add_action( 'admin_init', array( __CLASS__, 'register_settings' ) );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
+		add_action( 'admin_post_sll_restore_wordpress_defaults', array( __CLASS__, 'restore_wordpress_defaults' ) );
 	}
 
 	/**
@@ -186,6 +187,50 @@ class SLL_Settings {
 			'nav_alignment'       => in_array( $nav_alignment, $alignments, true ) ? $nav_alignment : $defaults['nav_alignment'],
 			'back_link_alignment' => in_array( $back_link_alignment, $alignments, true ) ? $back_link_alignment : $defaults['back_link_alignment'],
 		);
+	}
+
+	/**
+	 * Disables every login-page override while retaining its configured value.
+	 */
+	public static function restore_wordpress_defaults() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die(
+				esc_html__( 'You are not allowed to change these settings.', 'login-page-appearance' ),
+				'',
+				array( 'response' => 403 )
+			);
+		}
+
+		check_admin_referer( 'sll_restore_wordpress_defaults' );
+
+		$options = self::get_options();
+
+		$options['enabled']             = 0;
+		$options['background_enabled']  = 0;
+		$options['form_style_enabled']  = 0;
+		$options['form_width_enabled']  = 0;
+		$options['link_layout']         = 'stacked';
+		$options['link_style_enabled']  = 0;
+
+		update_option( self::OPTION_NAME, self::sanitize_options( $options ) );
+		add_settings_error(
+			self::OPTION_NAME,
+			'sll_wordpress_defaults_restored',
+			__( 'WordPress login appearance restored. Your customization values have been retained.', 'login-page-appearance' ),
+			'success'
+		);
+		set_transient( 'settings_errors', get_settings_errors(), 30 );
+
+		$redirect_url = add_query_arg(
+			array(
+				'page'             => self::PAGE_SLUG,
+				'settings-updated' => 'true',
+			),
+			admin_url( 'options-general.php' )
+		);
+
+		wp_safe_redirect( $redirect_url );
+		exit;
 	}
 
 	/**
@@ -437,6 +482,15 @@ class SLL_Settings {
 				submit_button();
 				?>
 			</form>
+			<div class="sll-restore-defaults">
+				<h2><?php esc_html_e( 'Restore WordPress defaults', 'login-page-appearance' ); ?></h2>
+				<p><?php esc_html_e( 'Turn off all Login Page Appearance overrides. Your configured logo, colors, widths, and alignments will be retained.', 'login-page-appearance' ); ?></p>
+				<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
+					<input type="hidden" name="action" value="sll_restore_wordpress_defaults">
+					<?php wp_nonce_field( 'sll_restore_wordpress_defaults' ); ?>
+					<?php submit_button( __( 'Restore WordPress defaults', 'login-page-appearance' ), 'secondary', 'submit', false ); ?>
+				</form>
+			</div>
 		</div>
 		<?php
 	}

@@ -31,6 +31,7 @@ Features include:
 * Optionally place the login navigation and back-to-site links in a responsive split row.
 * Style lost-password and back-to-site links with independent normal, hover, and keyboard-focus colors.
 * Align the login navigation and back-to-site links independently without absolute positioning.
+* Restore the complete WordPress login appearance without erasing saved customization values.
 
 The plugin stores Media Library attachment IDs rather than image URLs. When Site Logo is selected, changing the theme's Site Logo automatically updates the login screen.
 
@@ -59,6 +60,10 @@ Only when the optional appearance controls are enabled. The form preset adds rou
 
 When enabled, a small footer script moves WordPress's existing login navigation and back-to-site elements into a flexible two-column wrapper. It does not replace the links or their content. The layout returns to a single column on narrow screens and safely leaves the default markup unchanged if either link is unavailable.
 
+= Can I return the login screen to the WordPress defaults? =
+
+Yes. Use Restore WordPress defaults at the bottom of Settings > Login Page. This turns off every plugin override and restores the standard WordPress login appearance. Your configured logo, colors, widths, and alignments are retained if you want to enable them again.
+
 = Does it support multisite network-wide settings? =
 
 No. The plugin stores settings per site.
@@ -69,6 +74,7 @@ No. The plugin stores settings per site.
 * Added optional YCT-inspired styling for WordPress login, registration, and password forms.
 * Added an optional responsive login-page width control with a 320-to-640-pixel range.
 * Added an optional responsive split-row layout for the login navigation and back-to-site links.
+* Added a reversible action that restores the standard WordPress login appearance.
 * Added configurable normal, hover, and keyboard-focus colors for login navigation links.
 * Added independent left, center, or right alignment for navigation and back-to-site links.
 * Scoped all appearance rules with conditional login body classes.

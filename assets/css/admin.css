@@ -32,6 +32,17 @@
 	margin-left: 10px;
 }
 
+.sll-restore-defaults {
+	border-top: 1px solid #c3c4c7;
+	margin-top: 2rem;
+	max-width: 760px;
+	padding-top: 1.5rem;
+}
+
+.sll-restore-defaults h2 {
+	margin-top: 0;
+}
+
 .sll-background-toggle {
 	display: inline-block;
 	margin-bottom: 14px;
