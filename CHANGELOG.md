@@ -18,6 +18,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 - Renamed the plugin to Login Page Appearance to reflect its broader login-screen modernization scope.
 - Renamed the plugin folder, main file, settings-page slug, and translation text domain to `login-page-appearance`.
+- Updated the declared WordPress compatibility through version 7.1.
 - The login stylesheet now loads whenever a logo, form, or link appearance feature needs it.
 - Logo sizing rules are scoped to an active custom logo so form-only styling cannot reshape the default WordPress logo.
 

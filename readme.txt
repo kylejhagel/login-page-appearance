@@ -2,7 +2,7 @@
 Contributors: kylehagel
 Tags: login, logo, branding, custom logo, login form
 Requires at least: 6.2
-Tested up to: 6.8
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 1.2.0
 License: GPLv2 or later
